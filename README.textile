@@ -1,0 +1,21 @@
+h1. AS3 Core Interfaces
+
+Three very small libraries that contains the missing interfaces of the display objects. Flash Player version 9, 10 and 10.1 separately built to suit your project's needs.
+
+h1. Each SWC contains
+
+* IDisplayObject
+* IDisplayObjectContainer
+* IInteractiveObject
+* IMovieClip
+* ISprite
+
+h1. Why?
+
+Using interfaces are very important, but for some reason Adobe decided not to implement interfaces for the display layer. The reason behind this is to ensure that you extend the existing display classes when building your application. Personally I think a simple compile time error would have done the trick. :)
+
+These interfaces will aid you when you are building display objects that are generic and reusable. E.g. Lets say you create an overlay system that displays any display object that extends you custom interface of IOverlay. Great, this works perfectly, but lets say you want access some of the "standard" Sprite properties like "x", "y", etc - you can't because you are referring to you overlays as IOverlay. To simply fix this all you need to do is extend you IOverlay interface from ISprite, it then automatically inherits all properties. Problem Solved!
+
+h1. Note!
+
+When referring to display objects as interfaces you'll need to cast into DisplayObject to be able to add them to the stage, because the argument requirement is DisplayObject and not IDisplayObject.
